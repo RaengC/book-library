@@ -65,7 +65,7 @@ Backend
                 - login
                 - logout
                 - new (sign up)
-                - on signup create library
+                    - on signup create library
         <!-- Group User Model        //add if have time
             User Schema
                 - groupUsername
