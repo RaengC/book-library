@@ -1,34 +1,42 @@
 # book-library
 
 User creates account
+
     - logs in
     - The username names their library (creates Library List)
         default name
         automatically created. 
         (good reads as example)
+
 User searches for book (linked from google books API)
+
     - moves book to summary list or library 
     - summary list only shown during each DOM session
     - If book droped in library saved under user ID to local API
 
 Library 
+
     - New bookID created when moved here
     - Link google ID from original API to ensure orignal data can be updated with each login. 
     - Ability to leave comments on each book, saved within user login
+    
     LISTS
         - create lists from books saved in personal Library
         - full CRUD 
 
 ***********
 THINGS TO POSSIBLY ADD/FUNCTIONALITY
+
     Comments/ratings for books and lists
         - Book called from google API -> saved to Library -> unique ID created -> 
             review added (star/comment). 
         - EJS to make reviews? look at boutique travel homework for how to do review w08d02 
+
     Group Model
         - users can join/create a group
         - share/create lists within group
         - admin functionality
+
     Create individual profile (useful in group setting)
         - avatar
         - about section
@@ -39,12 +47,14 @@ THINGS TO POSSIBLY ADD/FUNCTIONALITY
 
 ************
 Backend
+
     Packages
         - Express JS
         - Bcrypt (encrypted passwords)
         - mongoose JS
         - cors JS
         - Express Solutions
+   
     MODELS (min 2)
         User Model
             User Schema
@@ -64,8 +74,8 @@ Backend
             User Routes
                 - login
                 - password
-                - new (create new group) -->
-        <!-- Book Model                  //find books via google books API (public)
+                - new (create new group) 
+         Book Model                  //find books via google books API (public)
             Book Schema         
                 - name
                 - description
@@ -76,7 +86,7 @@ Backend
              - getById          - public
              - new              - authenticated
              - update (byId)    - authenticated
-             - delete (byId)    - authenticated -->
+             - delete (byId)    - authenticated  -->
         Library Model           
             Library Schema
                 [{
@@ -102,20 +112,23 @@ Backend
                 - addItem               //add existing book to list
                 - removeItem            //remove existing book to list -->
 
-Frontend
+FrontEnd
+
     Tech
-        - jquery
-        - bootstrap
-        - page
+        * jquery
+        * bootstrap
+        * page
+
     Queries With
-        - fetch
-        - async await
+        * fetch
+        * async await
+
     Routes
-        - home
-        - login/out
-        - Library area, show all books and lists. 
-        - List creation
-        - item add to list
-        - item delete from list
+        * home
+        * login/out
+        * Library area, show all books and lists. 
+        * List creation
+        * item add to list
+        * item delete from list
     
 
