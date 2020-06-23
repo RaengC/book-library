@@ -1,5 +1,7 @@
 # book-library
 
+OVERVIEW 
+
 User creates account
 
     - logs in
@@ -46,7 +48,7 @@ THINGS TO POSSIBLY ADD/FUNCTIONALITY
         - sharing among friends/book clubs
 
 ************
-Backend
+BACKEND
 
     Packages
         - Express JS
@@ -112,7 +114,7 @@ Backend
                 - addItem               //add existing book to list
                 - removeItem            //remove existing book to list -->
 
-FrontEnd
+FRONTEND
 
     Tech
         * jquery

@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 require('./mongo')
 
 
@@ -12,6 +13,11 @@ const userRouter = require('./routes/userRoutes')
 
 //Middleware
 app.use(express.json())
+app.use(session({
+    secret: 'green frogs live here',
+    resave: false,
+    saveUninitialized: true
+}))
 
 //Paths 
 app.use('/user', userRouter)
