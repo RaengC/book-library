@@ -67,7 +67,7 @@ BACKEND
                 - login
                 - logout
                 - new (sign up)
-                    - on signup create library
+                    <!-- - on signup create library (change to book activation) -->
         <!-- Group User Model        //add if have time
             User Schema
                 - groupUsername
@@ -76,7 +76,7 @@ BACKEND
             User Routes
                 - login
                 - password
-                - new (create new group) 
+                - new (create new group)  -->
          Book Model                  //find books via google books API (public)
             Book Schema         
                 - name
@@ -88,7 +88,8 @@ BACKEND
              - getById          - public
              - new              - authenticated
              - update (byId)    - authenticated
-             - delete (byId)    - authenticated  -->
+             - delete (byId)    - authenticated 
+                - inital book put in library, links library to logged in user
         Library Model           
             Library Schema
                 [{
@@ -96,7 +97,7 @@ BACKEND
                     review: rating      [star / user/ comment]    
                 }]
                 - owner                 // user who owns this library
-            Library routes      - all authenticated
+            Library routes      - all authenticated/linked to userId
                 - get (all)     
                 - getById
                 - update                //change the name of the library

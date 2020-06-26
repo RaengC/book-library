@@ -10,5 +10,13 @@ const schema = new mongoose.Schema({
         required: true
     }
 })
+// need a reference to the library
+
+//.eachPath schemaType here or subdocument??? use []?
+
+// schema.eachPath((Library, schematype) => {
+//     username {} 
+// })
+
 
 module.exports = mongoose.model("User", schema)
