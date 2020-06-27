@@ -84,10 +84,10 @@ BACKEND
                 - author
                 - genre
             Book Routes (all RESTFUL routes/ full CRUD) // dont need as using google books API
-             - get (all)        - public
-             - getById          - public
+             - get (all)        - 
+             - getById          - title search
              - new              - authenticated
-             - update (byId)    - authenticated
+             <!-- - update (byId)    - authenticated -->
              - delete (byId)    - authenticated 
                 - inital book put in library, links library to logged in user
         Library Model           
@@ -100,7 +100,11 @@ BACKEND
             Library routes      - all authenticated/linked to userId
                 - get (all)     
                 - getById
+                - add new libray
+                - add book to library
+                - delete book from library
                 - update                //change the name of the library
+                - delete library
         <!-- List Model                      // user creates specific book lists within Library
             List Schema
                 - name     

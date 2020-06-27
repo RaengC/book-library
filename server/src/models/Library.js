@@ -1,25 +1,32 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    user: {
+    name: {
+        type: String,
+        required: true
+    },
+    owner: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: true
     },
-    books: [{
-        googleBookId: String,
-        title: String,
-        authors: [
-            String
-        ],
-        description: String,
-        imageLinks: {
-            smallThumbnail: String,
-            thumbnail: String
-        },
-
-        review: String
+    book: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Book'
     }]
+    // books: [{
+    //     googleBookId: String,
+    //     title: String,
+    //     authors: [
+    //         String
+    //     ],
+    //     description: String,
+    //     imageLinks: {
+    //         smallThumbnail: String,
+    //         thumbnail: String
+    //     },
+    //     // review: String
+    // }]
 })
 
 //call google API from front end, store to back end. 

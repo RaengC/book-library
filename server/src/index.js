@@ -10,6 +10,7 @@ const app = express()
 //Routes
 const userRouter = require('./routes/userRoutes')
 const libraryRouter = require('./routes/libraryRoutes')
+const bookRouter = require('./routes/bookRoutes')
 
 //Middleware
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use(session({
 //Paths 
 app.use('/user', userRouter)
 app.use('/library', libraryRouter)
+app.use('/book', bookRouter)
 
 //Start Server
 app.get('/', (req, res) => res.send('Hello World!'))
