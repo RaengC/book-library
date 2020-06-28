@@ -102,6 +102,14 @@ router.patch('/book/remove', async (req, res) => {
 
 
 //Delete Library
+// router.delete('/delete/:id', async (req, res) => {
+//     try {
+//         const data = await Library.findByIdAndDelete(req.params.id, req.body, {
+//             new: true
+//         })
+//         res.json(data)
+//     }
+// })
 
 
 

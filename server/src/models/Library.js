@@ -10,10 +10,10 @@ const schema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    book: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Book'
-    }]
+    // book: [{
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'Book'
+    // }]
     // books: [{
     //     googleBookId: String,
     //     title: String,
