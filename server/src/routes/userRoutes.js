@@ -19,6 +19,7 @@ router.post('/new', async (req, res) => {
 
 //Login existing user
 router.post('/login', async (req, res) => {
+    // console.log(req.body)
     const user = await User.findOne({
         username: req.body.username
     })

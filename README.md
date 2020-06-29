@@ -11,10 +11,9 @@ User creates account
         (good reads as example)
 
 User searches for book (linked from google books API)
-
     - moves book to summary list or library 
     - summary list only shown during each DOM session
-    - If book droped in library saved under user ID to local API
+    - If book droped in library saved with association to library
 
 Library 
 
@@ -83,24 +82,22 @@ BACKEND
                 - description
                 - author
                 - genre
+                - [libaryRoutes]
             Book Routes (all RESTFUL routes/ full CRUD) // dont need as using google books API
              - get (all)        - 
              - getById          - title search
              - new              - authenticated
-             <!-- - update (byId)    - authenticated -->
              - delete (byId)    - authenticated 
-                - inital book put in library, links library to logged in user
+             - addLibraryToBook
+                - inital book put in library, library to logged in user
         Library Model           
             Library Schema
-                [{
-                    api: ID             Google API Id         
-                    review: rating      [star / user/ comment]    
-                }]
+                - name
                 - owner                 // user who owns this library
             Library routes      - all authenticated/linked to userId
                 - get (all)     
                 - getById
-                - add new libray
+                - newLibrary
                 - add book to library
                 - delete book from library
                 - update                //change the name of the library
