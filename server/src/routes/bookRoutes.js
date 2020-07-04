@@ -66,27 +66,43 @@ router.post('/new', async (req, res) => {
 */
 
 //POST add library to book
-router.post('/library/new', async (req, res) => {
+router.post('/library/new/:libraryID', async (req, res) => {
+    // console.log('/library/new')
+    // console.log('req.body', req.body)
     try {
         const book = await Book.findOne({
-            _id: req.body.bookID
+            _id: req.body._id
         })
-        // console.log(book)
+        // console.log('book', book)
         const library = await Library.findOne({
             owner: req.session.user.id,
-            _id: req.body.libraryID
-
+            _id: req.params.libraryID
         })
-        // console.log(library)
-        if (!library || !book) {
-            res.status(404).send('comparison bad request')
-
-        } else {
-            console.log(book.library)
-            book.libraries.push(library) //push into array
-            const result = await book.save()
-            res.json(result)
+        if (!library) {
+            res.status(404).send('library not found')
         }
+        // console.log('library', library)
+        if (!book) {
+            req.body.libraries = req.params.libraryID
+            const newBook = await Book.create(req.body)
+            res.send(newBook)
+        } else {
+            // console.log(book.library)
+            const match = book.libraries.find(library => {
+                // console.log('library', library)
+                // console.log('req.params.libraryID', req.params.libraryID)
+                return library == req.params.libraryID
+            })
+            // console.log('match', match)
+            if (!match) {
+                book.libraries.push(library) //push into array
+                const existingBook = await book.save()
+                res.json(existingBook)
+            } else {
+                res.json('Book already within library')
+            }
+        }
+
     } catch (e) {
         console.log(e)
         res.status(400).send('bad request')

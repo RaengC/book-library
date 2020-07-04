@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
 
-    _id: String,
+    bookID: String,
     title: String,
     authors: [
         String
@@ -13,10 +13,10 @@ const schema = new mongoose.Schema({
         thumbnail: String
     },
 
-    libraries: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Library'
-    }]
+    // libraries: [{
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'Library'
+    // }]
 })
 
 module.exports = mongoose.model("Book", schema)

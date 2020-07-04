@@ -1,80 +1,58 @@
 import page from "//unpkg.com/page/page.mjs"
 
 //Identifies libraries for user
-const getLibrary = async () => {
+const getLibrary = async (formData) => {
+    console.log(formData)
     try {
-        const response = await fetch('/api/library', {
+        const response = await fetch('/api/library/', {
             method: 'GET',
             mode: 'cors',
-            credentials: 'same-origin'
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         })
 
         const data = await response.json()
         console.log(data)
-        addBooksToDom(data)
+        addLibraryToDom(data)
     } catch (e) {
         console.log(e)
 
     }
 }
 
-/* 
-find user libraries, display on dom (add to cards later).
 
-find books with library identifier
-    loop all books, search libaries array to identify personal libary selected
-    show all book ids with matching libary in list 
+const addLibraryToDom = (list) => {
 
-*/
-
-const addBooksToDom = (books) => {
-
-    books.forEach((library) => {
+    list.forEach((library) => {
         const ul = $('<ul></ul>')
         const li = $(`<li>${library.name}</li>`)
+
+        const btn = $(`<button>Add Book</button>`).on('click', () => {
+            page.redirect(`/editLibrary/${library._id}`)
+        });
+        ul.append(btn)
 
         ul.append(li)
         $('#app').append(ul)
     })
 
 }
-// const libraryList = (libraries) => {
-//     libraries.forEach((book) => {
-//         const ul = $('<ul></ul>')
-//         const li = $(`<li>${book.name}</li>`)
-
-//         //add once editLibrary created
-
-//         // const btn = $(`<button>Show Books</button>`).on('click', () => {
-//         //     page.redirect(`/editBooks/${book._id}`)
-//         // })
-//         // ul.append(btn)
-//     })
-
-//     const libraryBooks = $('<ul></ul>')
-//     libraries.book.forEach((book) => {
-//         libraryBooks.append(`<li>${book.name}</li>`)
-//     })
-
-//     li.append(libraryBooks)
-//     ul.append(li)
-//     $('#app').append(ul)
-// }
 
 //working
-const addLibraryToDom = (ctx, next) => {
+const library = (ctx, next) => {
 
     //card to add later
     $('#app').append(`
     <h1>Your Personal Libraries</h1>
-
-
     `)
 
     getLibrary()
 }
 
-export default addLibraryToDom
+export default library
 
 
 //possible card below from bootstrap

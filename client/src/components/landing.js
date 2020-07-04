@@ -10,7 +10,6 @@ function queryAPI(search) {
         .catch((error) => console.log(error));
 }
 
-
 function displayResult(result) {
     const list = result.items;
 
@@ -18,7 +17,7 @@ function displayResult(result) {
     bookList.children().remove();
 
     for (let i = 0; i < list.length; i++) {
-        bookList.append(`<div class="card shadow" data-toggle="tooltip" data-placement="right" title='${list[i].volumeInfo.description}'>
+        bookList.append(`<div class="card shadow" bookID="${list[i].id}" data-toggle="tooltip" data-placement="right" title='${list[i].volumeInfo.description}'>
                             <img src=${list[i].volumeInfo.imageLinks.thumbnail} class="card-img-top shadow-sm"/>
                             <div>
                                 <h5>${list[i].volumeInfo.title}</h5> <br>
@@ -30,50 +29,88 @@ function displayResult(result) {
     }
 }
 
-const landingOnReady = () => {
+//Identifies libraries for user
+const getLibrary = async () => {
+    try {
+        const response = await fetch('/api/library/', {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
 
-    $("#searchBtn").on('click', () => {
-        const search = $("#inp-limit").val();
-        queryAPI(search);
-    })
+        const data = await response.json()
+        console.log(data)
+        addLibraryToPanel(data)
+        // addLibraryToDom(data)
+    } catch (e) {
+        console.log(e)
 
-    $("#clearBtn").on('click', () => {
-        $('#bookSearch').empty();
-    })
+    }
+}
 
-    $("#clearBtn").on('click', () => {
-        $("#inp-limit").val("");
-    })
-
-    $("#summaryBtn").on('click', () => {
-        $("#summaryList .card").remove();
-    })
-
-
-    $("#summaryList").droppable({
-        drop: (event, ui) => {
-            $("#summaryList").addClass('dropOnActive');
-            ui.draggable.addClass('dropOnActive')
-
-            ui.draggable.removeAttr('style');
-            $("#summaryList").append(ui.draggable);
-        }
-    });
-
-    $("#yesList").droppable({
-        drop: (event, ui) => {
-            $("#yesList").addClass('holdOnActive');
-            ui.draggable.addClass('holdOnActive')
-
-            ui.draggable.draggable('disable');
-            ui.draggable.removeAttr('style');
-            $("#yesList").append(ui.draggable);
-        }
+const addLibraryToPanel = (library) => {
+    library[0].book.forEach(oneBook => {
+        $('#yesList').append(`<div class="card shadow" data-toggle="tooltip" data-placement="right" title='${oneBook.description}'>
+    <img src=${oneBook.imageLinks.thumbnail} class="card-img-top shadow-sm"/>
+    <div>
+        <h5>${oneBook.title}</h5> <br>
+       <h6>${oneBook.authors[0]}</h6>
+    </div>   
+</div>`)
     })
 }
 
-const addPageToDom = () => {
-    $('#app').append(`
+const landingOnReady = () => {
+
+        $("#searchBtn").on('click', () => {
+            const search = $("#inp-limit").val();
+            queryAPI(search);
+        })
+
+        $("#clearBtn").on('click', () => {
+            $('#bookSearch').empty();
+        })
+
+        $("#clearBtn").on('click', () => {
+            $("#inp-limit").val("");
+        })
+
+        $("#summaryBtn").on('click', () => {
+            $("#summaryList .card").remove();
+        })
+
+
+        $("#summaryList").droppable({
+            drop: (event, ui) => {
+                $("#summaryList").addClass('dropOnActive');
+                ui.draggable.addClass('dropOnActive')
+
+                ui.draggable.removeAttr('style');
+                $("#summaryList").append(ui.draggable);
+            }
+        });
+
+        $("#yesList").droppable({
+                drop: (event, ui) => {
+                    $("#yesList").addClass('holdOnActive');
+                    ui.draggable.addClass('holdOnActive')
+
+                    // addBookToLibrary()
+                    console.log($(this) //.attr("bookID"))
+                        //get the dropped element, use the attr to retrive the value. 
+                        //remove attr check if .this works. 
+                        //once have value create fucntion to link to backend. (code in edit library)
+
+                        ui.draggable.draggable('disable'); ui.draggable.removeAttr('style'); $("#yesList").append(ui.draggable);
+                    }
+                })
+        }
+
+        const addPageToDom = () => {
+            $('#app').append(`
     <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">ebook Personal Library </h1>
@@ -103,8 +140,8 @@ const addPageToDom = () => {
 
 </div>
 `)
-    landingOnReady()
+            landingOnReady()
+            getLibrary()
+        }
 
-}
-
-export default addPageToDom
+        export default addPageToDom

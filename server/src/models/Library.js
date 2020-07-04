@@ -10,23 +10,10 @@ const schema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    // book: [{
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: 'Book'
-    // }]
-    // books: [{
-    //     googleBookId: String,
-    //     title: String,
-    //     authors: [
-    //         String
-    //     ],
-    //     description: String,
-    //     imageLinks: {
-    //         smallThumbnail: String,
-    //         thumbnail: String
-    //     },
-    //     // review: String
-    // }]
+    book: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Book'
+    }]
 })
 
 //call google API from front end, store to back end. 
