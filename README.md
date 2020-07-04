@@ -138,4 +138,4 @@ FRONTEND
 **********
 RETROSPECTIVE CHANGE LOG
 
-
+- deleted component 'editLibrary', changed so user can only have one library on landing page
