@@ -29,7 +29,7 @@ function displayResult(result) {
     }
 }
 
-//Identifies libraries for user
+//GET library from mongo on login. 
 const getLibrary = async () => {
     try {
         const response = await fetch('/api/library/', {
@@ -97,12 +97,37 @@ const landingOnReady = () => {
         drop: (event, ui) => {
             $("#yesList").addClass('holdOnActive');
             ui.draggable.addClass('holdOnActive')
+            const book = ui.draggable.attr("bookID")
 
-            // addBookToLibrary()
-            //console.log($(this).attr("bookID"))
-            console.log(ui.draggable.attr("bookID"))
-            //get the dropped element, use the attr to retrive the value. 
-            //remove attr check if .this works. 
+            // console.log(ui.draggable.attr("bookID"))
+            // console.log(ui.draggable.attr("title"))
+            // console.log(ui.draggable.find('h5').text())
+            // console.log(ui.draggable.find('h6').text())
+            // console.log(ui.draggable.find('img').attr('src'))
+
+            const bookData = {
+                _id: ui.draggable.attr("bookID"),
+                title: ui.draggable.find('h5').text(),
+                authors: ui.draggable.find('h6').text(),
+                description: ui.draggable.attr("title"),
+                imageLinks: ui.draggable.find('img').attr('src')
+            }
+            console.log('bookdata', bookData)
+
+            const addBookToLibrary = async () => {
+                try {
+                    $.ajax({
+                        type: 'POST',
+                        url: `/api/library/addbook/${book}`,
+                        data: JSON.stringify(),
+                        contentType: 'application/json'
+                    })
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+            addBookToLibrary()
+
             //once have value create fucntion to link to backend. (code in edit library)
 
             ui.draggable.draggable('disable');

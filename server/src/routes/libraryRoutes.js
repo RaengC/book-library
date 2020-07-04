@@ -98,8 +98,7 @@ router.post('/new', async (req, res) => {
 
 
 
-//create new library (this one attached to user ID)
-
+//ADD book to library 4/7/2020
 router.post('/addbook', async (req, res) => {
     const findLibrary = await Library.findOne({
         owner: req.session.user.id

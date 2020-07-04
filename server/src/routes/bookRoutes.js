@@ -65,7 +65,7 @@ router.post('/new', async (req, res) => {
     }
 */
 
-//POST add library to book
+//POST add book to library
 router.post('/library/new/:libraryID', async (req, res) => {
     // console.log('/library/new')
     // console.log('req.body', req.body)
