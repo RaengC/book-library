@@ -97,36 +97,58 @@ const landingOnReady = () => {
         drop: (event, ui) => {
             $("#yesList").addClass('holdOnActive');
             ui.draggable.addClass('holdOnActive')
-            const book = ui.draggable.attr("bookID")
-
-            // console.log(ui.draggable.attr("bookID"))
-            // console.log(ui.draggable.attr("title"))
-            // console.log(ui.draggable.find('h5').text())
-            // console.log(ui.draggable.find('h6').text())
-            // console.log(ui.draggable.find('img').attr('src'))
+            // const book = ui.draggable.attr("bookID")
 
             const bookData = {
-                _id: ui.draggable.attr("bookID"),
+                // _id: ui.draggable.attr("bookID"),
+                bookID: ui.draggable.attr("bookID"),
                 title: ui.draggable.find('h5').text(),
                 authors: ui.draggable.find('h6').text(),
                 description: ui.draggable.attr("title"),
-                imageLinks: ui.draggable.find('img').attr('src')
+                imageLinks: {
+                    smallThumbnail: ui.draggable.find('img').attr('src'),
+                    thumbnail: ui.draggable.find('img').attr('src')
+                }
             }
             console.log('bookdata', bookData)
 
-            const addBookToLibrary = async () => {
+            const addBookToDatabase = async () => {
                 try {
-                    $.ajax({
-                        type: 'POST',
-                        url: `/api/library/addbook/${book}`,
-                        data: JSON.stringify(),
-                        contentType: 'application/json'
+                    const response = await fetch(`/api/book/new`, {
+                        method: 'POST',
+                        mode: 'cors',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(bookData)
                     })
+                    const data = await response.json()
+                    console.log('book added to database', data)
+                    // addBookToLibrary(data)
+
                 } catch (e) {
                     console.log(e)
                 }
             }
-            addBookToLibrary()
+
+            // need to add book api to backend, use fetch. send bookData to new book api 
+            // response of book api will be sent to the library 
+
+            // const addBookToLibrary = async (bookId) => {
+            //     try {
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: `/api/library/addbook/${bookId}`,
+            //             data: JSON.stringify(),
+            //             contentType: 'application/json'
+            //         })
+            //     } catch (e) {
+            //         console.log(e)
+            //     }
+            // }
+
+            addBookToDatabase()
 
             //once have value create fucntion to link to backend. (code in edit library)
 

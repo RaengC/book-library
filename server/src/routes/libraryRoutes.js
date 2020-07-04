@@ -111,15 +111,7 @@ router.post('/addbook', async (req, res) => {
         )
         findLibrary.book.push(book)
         await findLibrary.save()
-        // const updateData = {
-        //     user: req.session.user.id,
-        //     books: newBooks
-        // }
-        // const update = await Library.findByIdAndUpdate({
-        //     _id: findLibrary._id
-        // }, updateData, {
-        //     new: true
-        // })
+
         res.status(200).send(findLibrary)
     } else {
         const mongoData = {
