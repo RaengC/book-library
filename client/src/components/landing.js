@@ -44,7 +44,6 @@ const getLibrary = async () => {
         const data = await response.json()
         console.log(data)
         addLibraryToPanel(data)
-        // addLibraryToDom(data)
     } catch (e) {
         console.log(e)
 
@@ -97,10 +96,9 @@ const landingOnReady = () => {
         drop: async (event, ui) => {
             $("#yesList").addClass('holdOnActive');
             ui.draggable.addClass('holdOnActive')
-            // const book = ui.draggable.attr("bookID")
 
+            //ADD new book from front end to backend library
             const bookData = {
-                // _id: ui.draggable.attr("bookID"),
                 bookID: ui.draggable.attr("bookID"),
                 title: ui.draggable.find('h5').text(),
                 authors: ui.draggable.find('h6').text(),
@@ -110,9 +108,7 @@ const landingOnReady = () => {
                     thumbnail: ui.draggable.find('img').attr('src')
                 }
             }
-            console.log('bookdata', bookData)
-
-            // const addBookToDatabase = async () => {
+            // console.log('bookdata', bookData)
             try {
                 const response = await fetch(`/api/library/addnewbook`, {
                     method: 'POST',
@@ -124,34 +120,10 @@ const landingOnReady = () => {
                     body: JSON.stringify(bookData)
                 })
                 const data = await response.json()
-                console.log('book added to database', data)
-                // addBookToLibrary(data)
-
+                // console.log('book added to database', data)
             } catch (e) {
                 console.log(e)
             }
-            // }
-
-            // need to add book api to backend, use fetch. send bookData to new book api 
-            // response of book api will be sent to the library 
-
-            // const addBookToLibrary = async (data) => {
-            //     try {
-            //         $.ajax({
-            //             type: 'POST',
-            //             url: `/api/library/addnewbook`,
-            //             data: JSON.stringify(data),
-            //             contentType: 'application/json'
-            //         })
-
-            //     } catch (e) {
-            //         console.log(e)
-            //     }
-            // }
-
-            // addBookToDatabase()
-
-            //once have value create fucntion to link to backend. (code in edit library)
 
             ui.draggable.draggable('disable');
             ui.draggable.removeAttr('style');

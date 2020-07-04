@@ -9,7 +9,7 @@ import nav from './components/nav.js'
 import landing from './components/landing.js'
 import login from './components/login.js'
 import library from './components/libary.js'
-import editLibrary from './components/editLibrary.js'
+
 
 const showPages = () => {
     //configure routes
@@ -24,7 +24,6 @@ const showPages = () => {
 
     page('/library', nav, library)
 
-    page('/editLibrary/:id', nav, editLibrary)
 
     page({
         hashbang: true
