@@ -129,5 +129,36 @@ router.post('/addbook', async (req, res) => {
     }
 })
 
+//ADD New book from front end
+router.post('/addnewbook', async (req, res) => {
+    const findLibrary = await Library.findOne({
+        owner: req.session.user.id
+    })
+    if (findLibrary) {
+        console.log("find library", findLibrary)
+        // const newBooks = findLibrary.books
+        const book = await Book.create(
+            req.body
+        )
+        findLibrary.book.push(book)
+        await findLibrary.save()
+
+        res.status(200).send(findLibrary)
+    } else {
+        const mongoData = {
+            user: req.session.user.id,
+            books: [
+                req.body
+            ]
+        }
+        res.send('error')
+        // const data = await Library.create(mongoData)
+        // console.log("created", data)
+        // if (data) {
+        //     res.send(data)
+        // }
+    }
+})
+
 
 module.exports = router
