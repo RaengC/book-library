@@ -65,52 +65,55 @@ const addLibraryToPanel = (library) => {
 
 const landingOnReady = () => {
 
-        $("#searchBtn").on('click', () => {
-            const search = $("#inp-limit").val();
-            queryAPI(search);
-        })
+    $("#searchBtn").on('click', () => {
+        const search = $("#inp-limit").val();
+        queryAPI(search);
+    })
 
-        $("#clearBtn").on('click', () => {
-            $('#bookSearch').empty();
-        })
+    $("#clearBtn").on('click', () => {
+        $('#bookSearch').empty();
+    })
 
-        $("#clearBtn").on('click', () => {
-            $("#inp-limit").val("");
-        })
+    $("#clearBtn").on('click', () => {
+        $("#inp-limit").val("");
+    })
 
-        $("#summaryBtn").on('click', () => {
-            $("#summaryList .card").remove();
-        })
+    $("#summaryBtn").on('click', () => {
+        $("#summaryList .card").remove();
+    })
 
 
-        $("#summaryList").droppable({
-            drop: (event, ui) => {
-                $("#summaryList").addClass('dropOnActive');
-                ui.draggable.addClass('dropOnActive')
+    $("#summaryList").droppable({
+        drop: (event, ui) => {
+            $("#summaryList").addClass('dropOnActive');
+            ui.draggable.addClass('dropOnActive')
 
-                ui.draggable.removeAttr('style');
-                $("#summaryList").append(ui.draggable);
-            }
-        });
-
-        $("#yesList").droppable({
-                drop: (event, ui) => {
-                    $("#yesList").addClass('holdOnActive');
-                    ui.draggable.addClass('holdOnActive')
-
-                    // addBookToLibrary()
-                    console.log($(this) //.attr("bookID"))
-                        //get the dropped element, use the attr to retrive the value. 
-                        //remove attr check if .this works. 
-                        //once have value create fucntion to link to backend. (code in edit library)
-
-                        ui.draggable.draggable('disable'); ui.draggable.removeAttr('style'); $("#yesList").append(ui.draggable);
-                    }
-                })
+            ui.draggable.removeAttr('style');
+            $("#summaryList").append(ui.draggable);
         }
+    });
 
-        const addPageToDom = () => {
-            $('#app').append(`
+    $("#yesList").droppable({
+        drop: (event, ui) => {
+            $("#yesList").addClass('holdOnActive');
+            ui.draggable.addClass('holdOnActive')
+
+            // addBookToLibrary()
+            //console.log($(this).attr("bookID"))
+            console.log(ui.draggable.attr("bookID"))
+            //get the dropped element, use the attr to retrive the value. 
+            //remove attr check if .this works. 
+            //once have value create fucntion to link to backend. (code in edit library)
+
+            ui.draggable.draggable('disable');
+            ui.draggable.removeAttr('style');
+            $("#yesList").append(ui.draggable);
+        }
+    })
+}
+
+const addPageToDom = () => {
+    $('#app').append(`
     <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">ebook Personal Library </h1>
@@ -140,8 +143,8 @@ const landingOnReady = () => {
 
 </div>
 `)
-            landingOnReady()
-            getLibrary()
-        }
+    landingOnReady()
+    getLibrary()
+}
 
-        export default addPageToDom
+export default addPageToDom
