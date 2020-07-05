@@ -2,26 +2,26 @@
 
 OVERVIEW 
 
-User can search library without login
+    Visitor can search library without login
 
-User creates account to save items to personal library
-    - crates login
-    - Names their library 
+    User creates account to save items to personal library
+        - Creates login
+        - Names their library 
 
-User searches for book (linked from google books API)
-    - moves book to summary list or library 
-    - summary list only shown during each DOM session
-    - If book droped in library saved with association to library
+    User searches for book (linked from google books API)
+        - moves book to summary list or library 
+        - summary list only shown during each DOM session
+        - If book droped in library saved with association to library
+        - User can add notes/comments/reviews of book (can be shared in group settings)
 
-Library 
-
-    - New bookID created when moved here
-    - Link google ID from original API to ensure orignal data can be updated with each login. 
-    - Ability to leave comments on each book, saved within user login
-    
-    LISTS
-        - create lists from books saved in personal Library
-        - full CRUD 
+    Library 
+        - New bookID created when moved here
+        - Link google ID from original API to ensure orignal data can be updated with each login. 
+        - Ability to leave comments on each book, saved within user login
+        
+        LISTS
+            - create lists from books saved in personal Library
+            - full CRUD 
 
 ***********
 LINK  - To user stories and associated Technical Tasks 
@@ -39,14 +39,11 @@ THINGS TO POSSIBLY ADD/FUNCTIONALITY
         - users can join/create a group
         - share/create lists within group
         - admin functionality
+        - use witin teams for research in workplaces/academia
 
-    Create individual profile (useful in group setting)
+    User profile (useful in group setting)
         - avatar
         - about section
-
-    User Stories
-        - See above link to trello board, user stories and Technical Tasks
-        - use witin teams for research in workplaces/academia
         - sharing among friends/book clubs
 
 ************
@@ -68,15 +65,6 @@ BACKEND
                 - login
                 - logout
                 - Create new user
-        <!-- Group User Model        //add if have time
-            User Schema
-                - groupUsername
-                - groupPassword
-                - role          //admin, general user
-            User Routes
-                - login
-                - password
-                - new (create new group)  -->
          Book Model                  //find books via google books API (public)
             Book Schema         
                 - name
@@ -102,38 +90,25 @@ BACKEND
                 - delete book from library
                 - update                //change the name of the library
                 - delete library
-        <!-- List Model                      // user creates specific book lists within Library
-            List Schema
-                - name     
-                - [ref: items]          //array of referenced books
-                - owner                 
-            List routes         
-                - get (all)     
-                - getById
-                - new
-                - update
-                - delete
-                - addItem               //add existing book to list
-                - removeItem            //remove existing book to list -->
 
 FRONTEND
 
     Tech
-        * jquery
-        * bootstrap
-        * page
+        - jquery
+        - bootstrap
+        - page
 
     Queries With
-        * fetch
-        * async await
+        - fetch
+        - async await
 
     Routes
-        * home
-        * login/out
-        * Library area, show all books and lists. 
-        * List creation
-        * item add to list
-        * item delete from list
+        - home
+        - login/out/create new user
+        - Library area, show all books and lists. 
+        - List creation
+        - item add to list
+        - item delete from list
     
 **********
 RETROSPECTIVE CHANGE LOG
