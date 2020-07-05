@@ -12,12 +12,33 @@ const submitHandler = async (formData) => {
             },
             body: JSON.stringify(formData)
         })
+
         // console.log(response.json())
         const data = await response.text()
         console.log(data)
+        libraryHandler(data)
 
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+//LINK TO CREATE NEW LIBRARY NOT YET working. 
+const libraryHandler = async () => {
+    try {
+        const response = await fetch('/api/library/new', {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+        const data = await response.text()
+        console.log(data)
         page.redirect('/home')
-
     } catch (e) {
         console.log(e)
     }
@@ -35,6 +56,10 @@ const newAccount = (ctx, next) => {
             <label for="password">Password</label>
             <input type="password" placeholder="Enter password" class="form-control" id="password">
         </div>
+        <div class="form-group">
+            <label for="library">Library Name</label>
+            <input type="library" placeholder="Name your library" class="form-control" id="library">
+        </div>  
         <button type="create-account" class="btn btn-primary">Create Account</button>
     </form>
     
@@ -45,7 +70,8 @@ const newAccount = (ctx, next) => {
 
         const formData = {
             username: $('#username').val(),
-            password: $('#password').val()
+            password: $('#password').val(),
+            libaries: $('#library').val()
         }
         console.log(formData)
         submitHandler(formData)

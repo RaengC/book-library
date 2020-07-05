@@ -139,3 +139,4 @@ FRONTEND
 RETROSPECTIVE CHANGE LOG
 
 - deleted component 'editLibrary', changed so user can only have one library on landing page
+- added drop down NAV for Account, New User and Loggin (login working, new user working but not linked to library creation)
