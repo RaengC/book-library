@@ -2,9 +2,6 @@ const express = require('express')
 const User = require('../models/User')
 const Library = require('../models/Library')
 const brcypt = require('bcryptjs')
-const {
-    urlencoded
-} = require('express')
 
 const router = express.Router()
 
@@ -36,7 +33,7 @@ router.post('/login', async (req, res) => {
     res.status(status).send(msg)
 })
 
-//Logout user (middlewear added to index.js)
+//Logout user
 router.get('/logout', async (req, res) => {
     req.session.destroy(() => {
         res.send("Logged out")

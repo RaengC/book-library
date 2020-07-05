@@ -1,6 +1,5 @@
 import page from "//unpkg.com/page/page.mjs"
 
-
 const logoutHandler = async () => {
     try {
         const response = await fetch('/api/user/logout', {})
@@ -20,8 +19,6 @@ const logout = (ctx, next) => {
         </div>
     </div>
     `)
-
 }
-
 
 export default logout

@@ -2,13 +2,11 @@
 
 OVERVIEW 
 
-User creates account
+User can search library without login
 
-    - logs in
-    - The username names their library (creates Library List)
-        default name
-        automatically created. 
-        (good reads as example)
+User creates account to save items to personal library
+    - crates login
+    - Names their library 
 
 User searches for book (linked from google books API)
     - moves book to summary list or library 
@@ -47,6 +45,7 @@ THINGS TO POSSIBLY ADD/FUNCTIONALITY
         - about section
 
     User Stories
+        - See above link to trello board, user stories and Technical Tasks
         - use witin teams for research in workplaces/academia
         - sharing among friends/book clubs
 
@@ -65,12 +64,10 @@ BACKEND
             User Schema
                 - username
                 - password
-                - role ??
             User Routes
                 - login
                 - logout
-                - new (sign up)
-                    <!-- - on signup create library (change to book activation) -->
+                - Create new user
         <!-- Group User Model        //add if have time
             User Schema
                 - groupUsername
@@ -86,8 +83,7 @@ BACKEND
                 - description
                 - author
                 - genre
-                - [libaryRoutes]
-            Book Routes (all RESTFUL routes/ full CRUD) // dont need as using google books API
+            Book Routes 
              - get (all)        - 
              - getById          - title search
              - new              - authenticated
@@ -144,3 +140,5 @@ RETROSPECTIVE CHANGE LOG
 
 - deleted component 'editLibrary', changed so user can only have one library on landing page
 - added drop down NAV for Account, New User and Loggin (login working, new user working but not linked to library creation)
+- user linked to library, then books attached to user library to display on DOM
+

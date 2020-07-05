@@ -4,7 +4,6 @@ page.configure({
     window: window
 }) // bind to main window
 
-// components
 import nav from './components/nav.js'
 import landing from './components/landing.js'
 import login from './components/login.js'
@@ -13,7 +12,6 @@ import logout from './components/logout.js'
 
 
 const showPages = () => {
-    //configure routes
 
     page('/', () => {
         page.redirect('/home')
@@ -32,11 +30,9 @@ const showPages = () => {
     })
 }
 
-
 //jquery on ready
 $(() => {
-    showPages() //added showPages to link backend
+    showPages()
 
     console.log('ready');
-
 })

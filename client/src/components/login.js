@@ -45,13 +45,6 @@ const login = (ctx, next) => {
     
     `)
 
-    /*
-    ADD 
-    - logout button above. 
-    - create new user button 
-    
-    */
-
     $('#form-login').submit((e) => {
         e.preventDefault()
 

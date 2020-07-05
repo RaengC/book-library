@@ -13,12 +13,9 @@ const submitHandler = async (formData) => {
             body: JSON.stringify(formData)
         })
 
-        // console.log(response.json())
         const data = await response.text()
         console.log(data)
         libraryHandler(data)
-
-
     } catch (e) {
         console.log(e)
     }
