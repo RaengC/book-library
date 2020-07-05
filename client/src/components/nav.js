@@ -18,6 +18,7 @@ const nav = (ctx, next) => {
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/login">Login</a>
                         <a class="dropdown-item" href="/newAccount">New User</a>
+                        <a class="dropdown-item" id="logout" href="/logout">Logout</a>
                     </li>
 
                 </ul>

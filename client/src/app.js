@@ -9,6 +9,7 @@ import nav from './components/nav.js'
 import landing from './components/landing.js'
 import login from './components/login.js'
 import newAccount from './components/newAccount.js'
+import logout from './components/logout.js'
 
 
 const showPages = () => {
@@ -23,6 +24,8 @@ const showPages = () => {
     page('/login', nav, login)
 
     page('/newAccount', nav, newAccount)
+
+    page('/logout', nav, logout)
 
     page({
         hashbang: true

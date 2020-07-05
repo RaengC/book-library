@@ -26,6 +26,10 @@ Library
         - full CRUD 
 
 ***********
+LINK  - To user stories and associated Technical Tasks 
+https://trello.com/invite/b/wslzbKjc/226040f2eb73d5433a81889df65dd9ce/library
+
+***********
 THINGS TO POSSIBLY ADD/FUNCTIONALITY
 
     Comments/ratings for books and lists
