@@ -97,7 +97,7 @@ const landingOnReady = () => {
             $("#yesList").addClass('holdOnActive');
             ui.draggable.addClass('holdOnActive')
 
-            //ADD new book from front end to backend library
+            //ADD new book from front end to backend
             const bookData = {
                 bookID: ui.draggable.attr("bookID"),
                 title: ui.draggable.find('h5').text(),
@@ -108,7 +108,7 @@ const landingOnReady = () => {
                     thumbnail: ui.draggable.find('img').attr('src')
                 }
             }
-            // console.log('bookdata', bookData)
+            console.log('bookdata', bookData)
             try {
                 const response = await fetch(`/api/library/addnewbook`, {
                     method: 'POST',
@@ -120,7 +120,7 @@ const landingOnReady = () => {
                     body: JSON.stringify(bookData)
                 })
                 const data = await response.json()
-                // console.log('book added to database', data)
+                console.log('book added to database', data)
             } catch (e) {
                 console.log(e)
             }

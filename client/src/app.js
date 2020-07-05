@@ -8,7 +8,6 @@ page.configure({
 import nav from './components/nav.js'
 import landing from './components/landing.js'
 import login from './components/login.js'
-import library from './components/libary.js'
 
 
 const showPages = () => {
@@ -21,9 +20,6 @@ const showPages = () => {
     page('/home', nav, landing)
 
     page('/login', nav, login)
-
-    page('/library', nav, library)
-
 
     page({
         hashbang: true
