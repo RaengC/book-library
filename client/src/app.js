@@ -8,6 +8,7 @@ page.configure({
 import nav from './components/nav.js'
 import landing from './components/landing.js'
 import login from './components/login.js'
+import newAccount from './components/newAccount.js'
 
 
 const showPages = () => {
@@ -20,6 +21,8 @@ const showPages = () => {
     page('/home', nav, landing)
 
     page('/login', nav, login)
+
+    page('/newAccount', nav, newAccount)
 
     page({
         hashbang: true
