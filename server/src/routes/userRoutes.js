@@ -1,6 +1,6 @@
 const express = require('express')
 const User = require('../models/User')
-const Library = require('../models/Library') //link to library - need to create automatic link
+const Library = require('../models/Library')
 const brcypt = require('bcryptjs')
 const {
     urlencoded
@@ -13,8 +13,6 @@ router.post('/new', async (req, res) => {
     req.body.password = await brcypt.hash(req.body.password, 10)
     const data = await User.create(req.body)
     res.send(data)
-
-    //--> to ADD create default user Library on signup
 })
 
 //Login existing user
@@ -27,8 +25,6 @@ router.post('/login', async (req, res) => {
     let msg = "Try Again - Login Failed"
 
     if (user && await brcypt.compare(req.body.password, user.password)) {
-        //add the cookie capability after finding correct user
-        //req.session is an object within itself, part of express-session middleware
         req.session.user = {
             username: user.username,
             id: user._id,

@@ -47,21 +47,26 @@ const libraryHandler = async () => {
 const newAccount = (ctx, next) => {
 
     $('#app').append(`
-    <form id="new-account">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="login" placeholder="Enter User Name" class="form-control" id="username">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Create New Account</h1>
+                <form id="new-account">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="login" placeholder="Enter User Name" class="form-control" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" placeholder="Enter password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="library">Library Name</label>
+                        <input type="library" placeholder="Name your library" class="form-control" id="library">
+                    </div>  
+                    <button type="create-account" class="btn btn-primary">Create Account</button>
+                </form>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" placeholder="Enter password" class="form-control" id="password">
-        </div>
-        <div class="form-group">
-            <label for="library">Library Name</label>
-            <input type="library" placeholder="Name your library" class="form-control" id="library">
-        </div>  
-        <button type="create-account" class="btn btn-primary">Create Account</button>
-    </form>
+    </div>
     
     `)
 

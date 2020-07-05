@@ -26,17 +26,22 @@ const submitHandler = async (formData) => {
 const login = (ctx, next) => {
 
     $('#app').append(`
-    <form id="form-login">
-        <div class="form-group">
-            <label for="username">Login</label>
-            <input type="login" class="form-control" id="username">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Login To Library</h1>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="username">Login</label>
+                        <input type="login" class="form-control" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
     
     `)
 

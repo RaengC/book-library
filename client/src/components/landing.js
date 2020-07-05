@@ -150,14 +150,13 @@ const addPageToDom = () => {
             <div id="bookSearch" class="imageDisplay card-body"></div>
         </div>
     </div>
-
     <div class="row holdingBox">
         <div id="summaryList" class="ui-widget-header d-inline-flex p-2">
             <h4 class="mx-auto">Summary List <button id="summaryBtn" type="button"
                     class="btn btn-primary ml-3 eventListener">Clear</button></h4> <br />
         </div>
         <div id="yesList" class="ui-widget-header d-inline-flex p-2">
-            <h4 class="mx-auto">Personal Library</h4> <br />
+            <h4 class="mx-auto">Save to Personal Library</h4> <br />
         </div>
     </div>
 
