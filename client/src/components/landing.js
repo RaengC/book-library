@@ -1,3 +1,5 @@
+import page from "//unpkg.com/page/page.mjs"
+
 function queryAPI(search) {
 
     $.ajax({
@@ -46,7 +48,7 @@ const getLibrary = async () => {
         addLibraryToPanel(data)
     } catch (e) {
         console.log(e)
-
+        page.redirect('/login')
     }
 }
 
