@@ -16,7 +16,7 @@ const submitHandler = async (formData) => {
         const data = await response.text()
         console.log(data)
 
-        page.redirect('/home')
+        page.redirect('/library')
 
     } catch (e) {
         console.log(e)
