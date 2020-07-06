@@ -6,21 +6,12 @@ const logoutHandler = async () => {
 
     } catch (e) {
         console.log(e)
-
     }
 }
 
 const logout = (ctx, next) => {
     logoutHandler()
     page.redirect('/home')
-
-    // $('#app').append(`
-    // <div class="container">
-    //     <div class="jumbotron">
-    //         <h1> You are logged out </h1>
-    //     </div>
-    // </div>
-    // `)
 }
 
 export default logout

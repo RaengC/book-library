@@ -15,7 +15,6 @@
 
 .card img {
     height: 200px;
-
 }
 
 #bookSearch {
@@ -27,8 +26,6 @@
 .holdingBoxVisitor {
     justify-content: space-between;
 }
-
-
 
 #summaryList {
     width: 48%;

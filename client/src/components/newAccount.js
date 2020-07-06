@@ -64,7 +64,7 @@ const newAccount = (ctx, next) => {
                 </form>
         </div>
     </div>
-    
+
     `)
 
     $('#new-account').submit((e) => {

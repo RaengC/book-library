@@ -54,13 +54,15 @@ const getLibrary = async () => {
 
 const addLibraryToPanel = (library) => {
     library[0].book.forEach(oneBook => {
-        $('#yesList').append(`<div class="card shadow" data-toggle="tooltip" data-placement="right" title='${oneBook.description}'>
-    <img src=${oneBook.imageLinks.thumbnail} class="card-img-top shadow-sm"/>
-    <div>
-        <h5>${oneBook.title}</h5> <br>
-       <h6>${oneBook.authors[0]}</h6>
-    </div>   
-</div>`)
+        $('#yesList').append(`
+    
+        <div class="card shadow" data-toggle="tooltip" data-placement="right" title='${oneBook.description}'>
+            <img src=${oneBook.imageLinks.thumbnail} class="card-img-top shadow-sm"/>
+            <div>
+                <h5>${oneBook.title}</h5> <br>
+                <h6>${oneBook.authors[0]}</h6>
+            </div>   
+        </div>`)
     })
 }
 
@@ -158,7 +160,7 @@ const addPageToDom = () => {
                     class="btn btn-primary ml-3 eventListener">Clear</button></h4> <br />
         </div>
         <div id="yesList" class="ui-widget-header d-inline-flex p-2">
-            <h4 class="mx-auto">Save to Personal Library</h4> <br />
+            <h4 class="mx-auto">Saved Books</h4> <br />
         </div>
     </div>
 

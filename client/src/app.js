@@ -5,7 +5,7 @@ page.configure({
 }) // bind to main window
 
 import nav from './components/nav.js'
-import landing from './components/landing.js'
+import library from './components/library.js'
 import login from './components/login.js'
 import newAccount from './components/newAccount.js'
 import logout from './components/logout.js'
@@ -19,7 +19,7 @@ const showPages = () => {
     })
     page('/home', nav, visitor)
 
-    page('/library', nav, landing)
+    page('/library', nav, library)
 
     page('/login', nav, login)
 
